@@ -1,0 +1,16 @@
+---
+name: demoinstaller
+type: ocmInstaller
+labels:
+- name: commit
+  value: ${COMMIT}
+input:
+  type: file
+  path: installerspec.yaml
+---
+name: installerimage
+type: ociImage
+version: ${VERSION}
+input:
+  type: docker
+  path: ${IMAGE}
