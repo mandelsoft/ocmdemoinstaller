@@ -6,6 +6,7 @@ labels:
   value: ${COMMIT}
 input:
   type: file
+  mediaType: application/x-yaml
   path: installerspec.yaml
 ---
 name: installerimage
