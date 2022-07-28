@@ -3,7 +3,7 @@ COMPONENT := github.com/mandelsoft/ocmdemoinstaller
 IMAGE                                          = mandelsoft/ocmdemoinstaller
 
 REPO_ROOT                                      := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-VERSION                                        = $(shell cat $(REPO_ROOT)/VERSION)
+VERSION                                        = $(shell git describe --tags --exact-match 2>/dev/null|| echo "$$(cat $(REPO_ROOT)/VERSION)-dev")
 COMMIT                                         = $(shell git rev-parse HEAD)
 EFFECTIVE_VERSION                              = $(VERSION)-$(COMMIT)
 
@@ -11,6 +11,10 @@ EFFECTIVE_VERSION                              = $(VERSION)-$(COMMIT)
 ctf: ca
 	ocm transfer ca gen/ca gen/ctf
 	
+.PHONY: version
+version:
+	@echo $(VERSION)
+
 .PHONY: ca
 ca: build gen
 	ocm create ca -f $(COMPONENT) "$(VERSION)" mandelsoft gen/ca

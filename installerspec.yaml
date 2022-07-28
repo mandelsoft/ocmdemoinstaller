@@ -1,6 +1,7 @@
 executors:
-  - imageResource:
-      name: installerimage
+  - imageResourceRef:
+      resource:
+        name: installerimage
     config:
       level: info
     outputs:

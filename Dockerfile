@@ -4,7 +4,7 @@ WORKDIR /go/src/github.com/mandelsoft/ocmdemoinstaller/
 COPY go .
 #COPY go/pkg pkg
 RUN go get -d ./...
-RUN go build -o /main ./cmd
+RUN CGO_ENABLED=0 go build -o /main ./cmd
 
 FROM alpine
 
