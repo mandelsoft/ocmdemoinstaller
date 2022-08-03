@@ -6,6 +6,9 @@ executors:
       level: info
     outputs:
        test: bla
+credentials:
+  target:
+    description: Kubeconfig for installation
 configTemplate:
   parameters:
     username: admin

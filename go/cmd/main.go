@@ -63,6 +63,10 @@ func main() {
 	if err == nil {
 		fmt.Printf("found config:\n%s\n", string(data))
 	}
+	data, err = ioutil.ReadFile("ocm/inputs/ocmconfig")
+	if err == nil {
+		fmt.Printf("found ocm config:\n%s\n", string(data))
+	}
 	os.MkdirAll("ocm/outputs", 0744)
 	ioutil.WriteFile("ocm/outputs/test", []byte("result"), 0644)
 }
